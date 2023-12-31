@@ -9,10 +9,12 @@ const NavBar = () => {
 
   return (
     <nav>
-      <h1 className={style.titulo}>My e-commerce</h1>
-      <Button click={dosomething} label={"Celulares"} />
-      <Button click={dosomething} label={"Notebooks"} />
-      <Button click={dosomething} label={"Tablets"} />
+      <h1 className={style.titulo}>My Ecommerce</h1>
+      <div>
+        <Button click={dosomething} label={"Celulares"} />
+        <Button click={dosomething} label={"Notebooks"} />
+        <Button click={dosomething} label={"Tablets"} />
+      </div>
       <CartWidget count={0} />
     </nav>
   );
