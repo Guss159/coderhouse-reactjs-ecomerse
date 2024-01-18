@@ -1,22 +1,50 @@
 import { useState, useEffect } from "react";
-import { getProducts } from '../../asyncMock'
+import { getProducts, getProductsByCategory } from '../../asyncMock'
 import ItemList from '../ItemList/ItemList'
+
+import { useParams } from "react-router-dom";
+
 const ItemListContainer = ({ greeting }) => {
-	const[product, setProduct] = useState([])
+	const [product, setProduct] = useState([])
+
+	const { categoryId } = useParams()
+
+	const fuck = () => {getProducts, console.log("fuck")};
 
 	useEffect(() => {
-		getProducts()
+		const asyncFunc = categoryId ? getProductsByCategory : getProducts
+		asyncFunc(categoryId)
 			.then(response => {
 				setProduct(response)
 			})
 			.catch(error => {
 				console.error(error)
 			})
-	}, [])
+
+		//if(categoryId){
+		//	getProductsByCategory(categoryId)
+		//	.then(response => {
+		//		setProduct(response)
+		//	})
+		//	.catch(error => {
+		//		console.error(error)
+		//	})
+
+		//}else{
+		//	getProducts()
+		//	.then(response => {
+		//		setProduct(response)
+		//	})
+		//	.catch(error => {
+		//		console.error(error)
+		//	})
+		//}
+	}, [categoryId])
+
 	return (
 		<div>
-		<h1>{greeting}</h1>
-		<ItemList products={products}/>
+			<h1>{greeting}</h1>
+			<ItemList products={product} />
 		</div>
 	);
 };
