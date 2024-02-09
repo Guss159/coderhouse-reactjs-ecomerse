@@ -38,8 +38,13 @@ export const CartProvider = ({ children }) => {
 		return accu
 	};
 
-	const getTotal = () => {
+	const getTotalToPay = () => {
 		//  TODO:
+		let toPay = 0
+		cart.forEach(prod => {
+			toPay += (prod.quantity * prod.price)
+		})
+		return toPay
 	};
 
 	const clearCart = () => {
@@ -48,10 +53,10 @@ export const CartProvider = ({ children }) => {
 
 	// i can share the value instead of the function
 	const totalQuantity = getTotalQuantity()
-	const total = getTotal()
+	const totalTopay = getTotalToPay()
 
 	return (
-		<CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity, total, clearCart }}>
+		<CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity, totalTopay, clearCart }}>
 			{children}
 		</CartContext.Provider>
 	);
