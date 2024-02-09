@@ -19,7 +19,7 @@ const NavBar = () => {
 					Tablets
 				</NavLink>
 			</div>
-			<CartWidget count={0} />
+			<CartWidget />
 		</nav>
 	);
 };

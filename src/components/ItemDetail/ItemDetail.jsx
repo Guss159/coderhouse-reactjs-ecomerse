@@ -2,9 +2,12 @@ import styles from "./ItemDetail.module.css";
 import ItemCount from "../ItemCount/ItemCount";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ id, name, img, price, stock, description }) => {
 	const [quantityAdded, setQuantityAdded] = useState(0);
+
+	const { addItem } = useCartContext();
 
 	const handleOnAdd = (quantity) => {
 		const objProductToAdd = {
@@ -13,7 +16,7 @@ const ItemDetail = ({ id, name, img, price, stock, description }) => {
 			price,
 			quantity,
 		};
-		console.log(objProductToAdd);
+		addItem(objProductToAdd);
 		console.log("agregue al carrito: ", quantity);
 		setQuantityAdded(quantity);
 	};
