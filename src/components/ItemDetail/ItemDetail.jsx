@@ -10,6 +10,9 @@ const ItemDetail = ({ id, name, img, price, stock, description }) => {
 	const { addItem } = useCartContext();
 
 	const handleOnAdd = (quantity) => {
+		// TODO: find an alternative place to define the structure of
+		// this object since here is hidden, making it hard to discover
+		// its fields.
 		const objProductToAdd = {
 			id,
 			name,
