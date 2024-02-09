@@ -22,6 +22,11 @@ const ItemDetailContainer = () => {
 			})
 	}, [itemId])
 
+	if (!product){
+		// BUG: will appear while loading
+		return <h1>El producto no existe</h1>
+	}
+
 	return (
 		<div className="ItemDetailContainer">
 			<ItemDetail {...product} />
