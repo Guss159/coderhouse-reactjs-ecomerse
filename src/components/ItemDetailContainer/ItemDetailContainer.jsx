@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { db } from "../../service/firebase/firebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
-
+import LoadingWidget from "../LoadingWidget/LoadingWidget";
+import { getProductById } from "../../service/firebase/products";
 import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
@@ -10,25 +9,28 @@ const ItemDetailContainer = () => {
 
 	const { itemId } = useParams();
 
-	useEffect(() => {
-		//TODO: loading 1:32 and tittle
+	const [loading, setLoading] = useState(true);
 
-		// TODO: make getproducts() estoy obteniendo y manejando la fuente de los datos
-		const productDocument = doc(db, "products", itemId);
-		getDoc(productDocument)
-			.then((docSnap) => {
-				const fields = docSnap.data();
-				const productAdapted = {
-					id: docSnap.id,
-					...fields,
-				};
-				setProduct(productAdapted);
+	//TODO:  1:32  tittle
+
+	useEffect(() => {
+		setLoading(true);
+		getProductById(itemId)
+			.then((prod) => {
+				setProduct(prod);
 			})
 			.catch((error) => {
 				//TODO: notif
-				console.log(error);
+				console.log(error, "oops");
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}, [itemId]);
+
+	if (loading) {
+		return <LoadingWidget />;
+	}
 
 	if (!product) {
 		// BUG: will appear while loading
