@@ -31,11 +31,11 @@ export const CartProvider = ({ children }) => {
 	};
 
 	const getTotalQuantity = () => {
-		let accu = 0
+		let quantity = 0
 		cart.forEach(prod => {
-			accu += prod.quantity
+			quantity += prod.quantity
 		})
-		return accu
+		return quantity
 	};
 
 	const getTotalToPay = () => {
