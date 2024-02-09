@@ -54,10 +54,10 @@ export const CartProvider = ({ children }) => {
 
 	// i can share the value instead of the function
 	const totalQuantity = getTotalQuantity()
-	const totalTopay = getTotalToPay()
+	const totalToPay = getTotalToPay()
 
 	return (
-		<CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity, totalTopay, clearCart }}>
+		<CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity, totalToPay, clearCart }}>
 			{children}
 		</CartContext.Provider>
 	);
