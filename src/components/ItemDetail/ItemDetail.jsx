@@ -1,5 +1,21 @@
 import ItemCount from '../ItemCount/ItemCount'
-const ItemDetail = ({ id, name, img, price, stock, description }) => {
+import { useState } from 'react';
+import { Link } from "react-router-dom";
+
+const ItemDetail = ({ id, name, img, price, stock, description}) => {
+	const [quantityAdded, setQuantityAdded] = useState(0)
+	//const [inputType, setInputType] = useState('button')
+	//const ItemCount = inputType === 'input' ? InputCount : ButtonCount
+
+	const handleOnAdd = (quantity) => {
+		const objProductToAdd = {
+			id, name, price, quantity
+		}
+		console.log(objProductToAdd)
+		console.log('agregue al carrito: ', quantity)
+		setQuantityAdded(quantity)
+	}
+
 	return (
 		<article className="CardItem">
 			<header className="Header">
@@ -22,7 +38,11 @@ const ItemDetail = ({ id, name, img, price, stock, description }) => {
 				</p>
 			</section>
 			<footer className="ItemFooter">
-				<ItemCount initial={0} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada', quantity)} />
+				{
+					quantityAdded == 0
+					? <ItemCount initial={0} stock={stock} onAdd={handleOnAdd} />
+					: <Link to='/cart'>Finalizar la compra</Link>
+				}
 			</footer>
 		</article>
 	);
