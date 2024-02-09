@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 const ItemDetail = ({ id, name, img, price, stock, description }) => {
 	const [quantityAdded, setQuantityAdded] = useState(0);
-	//const [inputType, setInputType] = useState('button')
-	//const ItemCount = inputType === 'input' ? InputCount : ButtonCount
 
 	const handleOnAdd = (quantity) => {
 		const objProductToAdd = {
