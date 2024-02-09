@@ -1,3 +1,4 @@
+import styles from "./CartItem.module.css"
 import { useCartContext } from "../../context/CartContext";
 
 const CartItem = ({ id, name, price, quantity }) => {
@@ -6,7 +7,7 @@ const CartItem = ({ id, name, price, quantity }) => {
 	return (
 		<div>
 			<p>Tu Carrito</p>
-			<div>
+			<div className={styles.container}>
 				<p>{name}</p>
 				<p>Cantidad: {quantity}</p>
 				<p>Precio x Unidad: ${price}</p>
