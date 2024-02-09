@@ -1,14 +1,21 @@
-.button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.item_count{
+	margin: auto;
+	width: 50%;
 }
-.number {
-  margin: 0px;
-  margin-bottom: 10 px;
+
+.button_container {
+	display: flex;
+	text-align: center;
+	align-items: center;
 }
+
 .button {
-  margin: 5px;
-  padding: 10px;
-  color: white;
+	margin: 5px;
+	padding: 10px;
+	color: white;
+}
+
+.number {
+	margin: 0px;
+	margin-bottom: 10 px;
 }
