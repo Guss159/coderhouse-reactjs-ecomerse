@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { getProducts } from "../../service/firebase/products";
+import LoadingWidget from "../LoadingWidget/LoadingWidget";
 
 const ItemListContainer = ({ greeting }) => {
 	const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ const ItemListContainer = ({ greeting }) => {
 
 	//const { showNotification } = useNotification()
 
-	// const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
 
 	//useEffect(() => {
 	//	if(categoryId) document.title = "Ecomerse: " + categoryId
@@ -18,7 +19,7 @@ const ItemListContainer = ({ greeting }) => {
 	//})
 
 	useEffect(() => {
-		// setLoading(true)
+		setLoading(true)
 		getProducts(categoryId)
 			.then((prods) => {
 				setProducts(prods);
@@ -27,13 +28,15 @@ const ItemListContainer = ({ greeting }) => {
 				console.log(error, "hubo un error");
 				//TODO: show notification
 				//showNotification(error, error);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
-		//.finally(() => {setLoading(false)})
 	}, [categoryId]);
 
-	//if(loading){
-	//	return <h1>Cargando los productos...</h1>
-	//}
+	if (loading) {
+		return <LoadingWidget />;
+	}
 
 	return (
 		<div>
