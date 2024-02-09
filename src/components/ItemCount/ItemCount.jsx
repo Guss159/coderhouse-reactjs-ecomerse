@@ -15,14 +15,13 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       setQuantity(quantity - 1);
     }
   };
-	// TODO: find an alternative to h4 tag
   return (
     <div>
       <div className={style.button_container}>
         <button className={style.button} onClick={decrement}>
           -
         </button>
-        <h4 className={style.number}>{quantity} </h4>
+        <p className={style.number}> {quantity} </p>
         <button className={style.button} onClick={increment}>
           +
         </button>
