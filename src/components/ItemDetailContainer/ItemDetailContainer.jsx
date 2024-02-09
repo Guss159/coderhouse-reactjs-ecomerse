@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { getProductById } from "../../asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import { db } from "../../service/firebase/firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
 
 import { useParams } from "react-router-dom";
 
@@ -10,12 +11,22 @@ const ItemDetailContainer = () => {
 	const { itemId } = useParams();
 
 	useEffect(() => {
-		getProductById(itemId)
-			.then((response) => {
-				setProduct(response);
+		//TODO: loading 1:32 and tittle
+
+		// TODO: make getproducts() estoy obteniendo y manejando la fuente de los datos
+		const productDocument = doc(db, "products", itemId);
+		getDoc(productDocument)
+			.then((docSnap) => {
+				const fields = docSnap.data();
+				const productAdapted = {
+					id: docSnap.id,
+					...fields,
+				};
+				setProduct(productAdapted);
 			})
 			.catch((error) => {
-				console.error(error);
+				//TODO: notif
+				console.log(error);
 			});
 	}, [itemId]);
 
