@@ -1,3 +1,4 @@
+import styles from './ItemDetail.module.css'
 import ItemCount from '../ItemCount/ItemCount'
 import { useState } from 'react';
 import { Link } from "react-router-dom";
@@ -17,7 +18,7 @@ const ItemDetail = ({ id, name, img, price, stock, description}) => {
 	}
 
 	return (
-		<article className="CardItem">
+		<article className={styles.item_detail}>
 			<header className="Header">
 				<h2 className="ItemHeader">
 					{name}
