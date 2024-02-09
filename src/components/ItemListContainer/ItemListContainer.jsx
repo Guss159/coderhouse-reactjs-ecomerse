@@ -20,25 +20,6 @@ const ItemListContainer = ({ greeting }) => {
 			.catch(error => {
 				console.error(error)
 			})
-
-		//if(categoryId){
-		//	getProductsByCategory(categoryId)
-		//	.then(response => {
-		//		setProduct(response)
-		//	})
-		//	.catch(error => {
-		//		console.error(error)
-		//	})
-
-		//}else{
-		//	getProducts()
-		//	.then(response => {
-		//		setProduct(response)
-		//	})
-		//	.catch(error => {
-		//		console.error(error)
-		//	})
-		//}
 	}, [categoryId])
 
 	return (

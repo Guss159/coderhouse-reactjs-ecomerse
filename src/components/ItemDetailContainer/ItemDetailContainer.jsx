@@ -11,9 +11,6 @@ const ItemDetailContainer = () => {
 
 	const { itemId } = useParams()
 
-	// BUG:
-	// useEffect(() |)
-
 	useEffect(() => {
 		// TODO: remove hardcode value
 		getProductById(itemId)
