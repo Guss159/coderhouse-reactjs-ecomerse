@@ -2,7 +2,7 @@ import styles from "./CartItem.module.css"
 import { useCartContext } from "../../context/CartContext";
 
 const CartItem = ({ id, name, price, quantity }) => {
-	const { totaltoPay, removeItem } = useCartContext();
+	const { removeItem } = useCartContext();
 
 	return (
 		<div>
@@ -11,7 +11,7 @@ const CartItem = ({ id, name, price, quantity }) => {
 				<p>{name}</p>
 				<p>Cantidad: {quantity}</p>
 				<p>Precio x Unidad: ${price}</p>
-				<p>Subtotal: {totaltoPay}</p>
+				<p>Subtotal: ${price * quantity}</p>
 				<button onClick={() => {removeItem(id)}}>X</button>
 			</div>
 		</div>
