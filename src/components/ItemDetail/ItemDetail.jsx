@@ -3,11 +3,14 @@ import ItemCount from "../ItemCount/ItemCount";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import { useNotification } from '../../notification/NotificationService'
 
 const ItemDetail = ({ id, name, img, price, stock, description }) => {
 	const [quantityAdded, setQuantityAdded] = useState(0);
 
 	const { addItem } = useCartContext();
+
+    const { showNotification } = useNotification()
 
 	const handleOnAdd = (quantity) => {
 		// TODO: find an alternative place to define the structure of
@@ -20,7 +23,7 @@ const ItemDetail = ({ id, name, img, price, stock, description }) => {
 			quantity,
 		};
 		addItem(objProductToAdd);
-		console.log("agregue al carrito: ", quantity);
+		showNotification('info', `Se agregaron correctamente ${quantity} ${name}`)
 		setQuantityAdded(quantity);
 	};
 

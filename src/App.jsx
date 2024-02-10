@@ -8,11 +8,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import CartView from "./components/CartView/CartView";
 import Checkout from "./components/Checkout/Checkout";
-
+import OrderForm from "./components/OrderForm/OrderForm";
+import { NotificationProvider } from "./notification/NotificationService";
 
 function App() {
 	return (
 		<div>
+		<NotificationProvider>
 		<CartProvider>
 			<BrowserRouter>
 					<NavBar />
@@ -26,6 +28,7 @@ function App() {
 					</Routes>
 			</BrowserRouter>
 		</CartProvider>
+		</NotificationProvider>
 		</div>
 	);
 }

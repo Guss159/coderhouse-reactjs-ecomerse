@@ -3,13 +3,15 @@ import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { getProducts } from "../../service/firebase/products";
 import LoadingWidget from "../LoadingWidget/LoadingWidget";
+import { useNotification } from "../../notification/NotificationService"
+
 
 const ItemListContainer = ({ greeting }) => {
 	const [products, setProducts] = useState([]);
 
 	const { categoryId } = useParams();
 
-	//const { showNotification } = useNotification()
+	const { showNotification } = useNotification()
 
 	const [loading, setLoading] = useState(true);
 
@@ -25,9 +27,7 @@ const ItemListContainer = ({ greeting }) => {
 				setProducts(prods);
 			})
 			.catch((error) => {
-				console.log(error, "hubo un error");
-				//TODO: show notification
-				//showNotification(error, error);
+				showNotification(error, error);
 			})
 			.finally(() => {
 				setLoading(false);
