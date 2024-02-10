@@ -40,7 +40,7 @@ export const CartProvider = ({ children }) => {
 	};
 
 	const getTotalToPay = () => {
-		//  TODO:
+		//  BUG: why is generating a post???:
 		let toPay = 0
 		cart.forEach(prod => {
 			toPay += (prod.quantity * prod.price)

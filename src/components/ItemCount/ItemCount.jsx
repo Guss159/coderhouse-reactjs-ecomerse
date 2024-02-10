@@ -15,6 +15,9 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 			setQuantity(quantity - 1);
 		}
 	};
+
+	// BUG: can add items with 0 quantity.
+	// TODO: grey out button on 0 quantyty
 	return (
 		<div className={style.item_count}>
 			<div className={style.button_container}>
