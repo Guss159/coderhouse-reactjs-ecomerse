@@ -1,19 +1,15 @@
-import CartItem from "../CartItem/CartItem";
+import CartItemList from "../CartItemList/CartItemList";
 import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 const CartView = () => {
-	const { cart, totalQuantity, totalToPay, clearCart } = useCartContext();
+	const { totalQuantity, totalToPay, clearCart } = useCartContext();
 
 	if (totalQuantity !== 0) {
 		return (
 			<div>
 				<h1>Tu Carrito!</h1>
-				<div>
-					{cart.map((prod) => (
-						<CartItem key={prod.id} {...prod} />
-					))}
-				</div>
+				<CartItemList />
 				<p>Total a pagar: ${totalToPay}</p>
 				<button onClick={() => clearCart()}>Vaciar carrito</button>
 				<Link to="/checkout">Checkout</Link>
