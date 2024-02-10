@@ -6,7 +6,6 @@ const CartItem = ({ id, name, price, quantity }) => {
 
 	return (
 		<div>
-			<p>Tu Carrito</p>
 			<div className={styles.container}>
 				<p>{name}</p>
 				<p>Cantidad: {quantity}</p>

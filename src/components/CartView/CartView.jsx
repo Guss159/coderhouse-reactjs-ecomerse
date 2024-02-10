@@ -8,6 +8,7 @@ const CartView = () => {
 	if (totalQuantity !== 0) {
 		return (
 			<div>
+				<h1>Tu Carrito!</h1>
 				<div>
 					{cart.map((prod) => (
 						<CartItem key={prod.id} {...prod} />
