@@ -1,7 +1,7 @@
 const LoadingWidget = () => {
 	return (
 		<>
-			<h1>Cargando los productos...</h1>
+			<h1>Cargando ...</h1>
 		</>
 	);
 };
