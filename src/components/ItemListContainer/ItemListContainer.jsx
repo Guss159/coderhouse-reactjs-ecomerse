@@ -3,15 +3,14 @@ import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { getProducts } from "../../service/firebase/products";
 import LoadingWidget from "../LoadingWidget/LoadingWidget";
-import { useNotification } from "../../notification/NotificationService"
-
+import { useNotification } from "../../notification/NotificationService";
 
 const ItemListContainer = ({ greeting }) => {
 	const [products, setProducts] = useState([]);
 
 	const { categoryId } = useParams();
 
-	const { showNotification } = useNotification()
+	const { showNotification } = useNotification();
 
 	const [loading, setLoading] = useState(true);
 
@@ -21,7 +20,7 @@ const ItemListContainer = ({ greeting }) => {
 	//})
 
 	useEffect(() => {
-		setLoading(true)
+		setLoading(true);
 		getProducts(categoryId)
 			.then((prods) => {
 				setProducts(prods);
